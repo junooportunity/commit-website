@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Support - Commit</title>
+    <meta name="description" content="Get help with Commit - Your AI Decision-Making Companion"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Lora', Georgia, serif; }
+        .nav-link { color: #374151; font-weight: 500; transition: color 0.2s; }
+        .nav-link:hover { color: #1B7B7B; }
+        .footer-link { color: #6b7280; transition: color 0.2s; }
+        .footer-link:hover { color: #1B7B7B; }
+        .teal-text { color: #1B7B7B; }
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid #1B7B7B;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+        }
+        .mobile-menu.active { display: block; }
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #374151;
+            font-weight: 500;
+            border-radius: 0.5rem;
+        }
+        .mobile-menu a:hover { background-color: #E8F4F4; color: #1B7B7B; }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #374151;
+            transition: all 0.3s;
+        }
+        @media (max-width: 767px) { .hamburger { display: flex; } }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="min-h-screen flex flex-col" style="background-color: #FAF6F1">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b relative" style="border-color: #1B7B7B">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-6">
+                    <a class="flex items-center" href="../index.html">
+                        <img alt="Commit logo" width="40" height="40" class="h-10 w-10 rounded-xl border border-gray-200" src="../icon.png"/>
+                        <span class="ml-3 text-2xl font-bold text-black serif">Commit</span>
+                    </a>
+                    <nav class="hidden md:flex space-x-8">
+                        <a href="../index.html#features" class="nav-link">Features</a>
+                        <a href="https://apps.apple.com/app/commit" target="_blank" rel="noopener noreferrer" class="nav-link">Download</a>
+                        <a class="nav-link" href="./">Support</a>
+                    </nav>
+                    <div class="hamburger md:hidden" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">
+                    <a href="../index.html">Home</a>
+                    <a href="https://apps.apple.com/app/commit" target="_blank" rel="noopener noreferrer">Download</a>
+                    <a href="../privacy/">Privacy</a>
+                    <a href="../terms/">Terms</a>
+                    <a href="./">Support</a>
+                </div>
+            </div>
+        </header>
+        <script>
+            function toggleMenu() {
+                document.getElementById('mobileMenu').classList.toggle('active');
+            }
+        </script>
+
+        <!-- Main Content -->
+        <main class="flex-grow">
+            <div class="bg-gradient-to-br from-[#FAF6F1] to-white min-h-[60vh]">
+                <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                    <h1 class="text-4xl font-bold text-gray-900 mb-12 serif">Support</h1>
+                    <div class="bg-gray-50 rounded-xl p-8">
+                        <p class="text-gray-700 mb-4">For help, please email:</p>
+                        <div class="flex items-center justify-between bg-white rounded-lg p-4 mb-6">
+                            <span class="text-gray-900 font-mono" id="email">support@commitdecisionapp.com</span>
+                            <button onclick="copyEmail()" class="text-white px-6 py-2 rounded-md transition-colors text-sm font-medium" style="background-color: #1B7B7B">Copy</button>
+                        </div>
+                        <p class="text-gray-600 text-sm">We typically respond within 24 hours during business days.</p>
+                    </div>
+
+                    <div class="mt-12">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6 serif">Frequently Asked Questions</h2>
+                        <div class="space-y-6">
+                            <div class="bg-white rounded-xl p-6 border" style="border-color: #E8F4F4">
+                                <h3 class="font-semibold text-gray-900 mb-2">Is my data private?</h3>
+                                <p class="text-gray-600 text-sm">Yes. Your conversations and decisions are stored locally on your device. We don't sell your data or share what you're wrestling with.</p>
+                            </div>
+                            <div class="bg-white rounded-xl p-6 border" style="border-color: #E8F4F4">
+                                <h3 class="font-semibold text-gray-900 mb-2">What decisions can Commit help with?</h3>
+                                <p class="text-gray-600 text-sm">Anything you're overthinking. Career changes, relationships, where to live, money decisions, or even just what to eat for dinner. Big or small, Commit helps you stop circling and start deciding.</p>
+                            </div>
+                            <div class="bg-white rounded-xl p-6 border" style="border-color: #E8F4F4">
+                                <h3 class="font-semibold text-gray-900 mb-2">Is Commit a replacement for therapy?</h3>
+                                <p class="text-gray-600 text-sm">No. Commit is a decision support tool, not a mental health service. If you're dealing with anxiety, depression, or other mental health concerns, please consult a qualified professional.</p>
+                            </div>
+                            <div class="bg-white rounded-xl p-6 border" style="border-color: #E8F4F4">
+                                <h3 class="font-semibold text-gray-900 mb-2">How do I delete my data?</h3>
+                                <p class="text-gray-600 text-sm">Go to Settings > Reset App to clear all your data, or simply uninstall the app. Since all data is stored locally, uninstalling removes everything.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t" style="border-color: #1B7B7B">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="flex items-center">
+                            <img alt="Commit logo" width="40" height="40" class="h-10 w-10 rounded-xl border border-gray-200" src="../icon.png"/>
+                            <span class="ml-3 text-xl font-bold text-black serif">Commit</span>
+                        </div>
+                        <p class="mt-4 text-gray-600 max-w-md">Your AI decision-making companion.<br>Stop overthinking. Start deciding.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold tracking-wider uppercase" style="color: #1B7B7B">Legal</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a class="footer-link" href="../terms/">Terms of Service</a></li>
+                            <li><a class="footer-link" href="../privacy/">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold tracking-wider uppercase" style="color: #1B7B7B">Support</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a class="footer-link" href="./">Help Center</a></li>
+                            <li><a href="mailto:support@commitdecisionapp.com" class="footer-link">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 border-t border-gray-200 pt-8">
+                    <p class="text-center text-gray-400 text-sm">&copy; 2026 Monos Pros Monon. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function copyEmail() {
+            const email = document.getElementById('email').textContent;
+            navigator.clipboard.writeText(email).then(() => {
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.style.backgroundColor = '#E07A5F';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.backgroundColor = '#1B7B7B';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Commit - Your AI Decision-Making Companion</title>
+    <meta name="description" content="Stop overthinking. Start deciding. Commit helps you cut through analysis paralysis, trust your gut, and make decisions that stick."/>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+    <link rel="canonical" href="https://commitdecisionapp.com/"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .nav-link {
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: #1B7B7B;
+        }
+        .footer-link {
+            color: #6b7280;
+            transition: color 0.2s;
+        }
+        .footer-link:hover {
+            color: #1B7B7B;
+        }
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid #1B7B7B;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #374151;
+            font-weight: 500;
+            border-radius: 0.5rem;
+        }
+        .mobile-menu a:hover {
+            background-color: #E8F4F4;
+            color: #1B7B7B;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #374151;
+            transition: all 0.3s;
+        }
+        @media (max-width: 767px) {
+            .hamburger {
+                display: flex;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #1B7B7B 0%, #2D9999 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        /* Screenshot Carousel Styles */
+        .screenshot-carousel {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .screenshot-stack {
+            position: relative;
+            width: 280px;
+            height: 560px;
+        }
+        .screenshot-slide {
+            position: absolute;
+            width: 280px;
+            left: 0;
+            top: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+        .screenshot-slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        .screenshot-slide.active {
+            z-index: 3;
+            opacity: 1;
+        }
+        .screenshot-slide.next,
+        .screenshot-slide.prev,
+        .screenshot-slide.hidden {
+            z-index: 1;
+            opacity: 0;
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: white;
+            border: 2px solid #1B7B7B;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+            color: #1B7B7B;
+        }
+        .carousel-arrow:hover {
+            background: #1B7B7B;
+            color: white;
+        }
+        .carousel-arrow.prev { left: -70px; }
+        .carousel-arrow.next { right: -70px; }
+        .carousel-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d1d5db;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+        }
+        .carousel-dot.active {
+            background: #1B7B7B;
+            width: 24px;
+            border-radius: 4px;
+        }
+        .feature-label {
+            text-align: center;
+            font-weight: 600;
+            color: #374151;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+        }
+        @media (max-width: 767px) {
+            .carousel-arrow { display: none; }
+            .screenshot-stack { width: 220px; height: 440px; }
+            .screenshot-slide { width: 220px; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="min-h-screen flex flex-col" style="background-color: #FAF6F1">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b relative" style="border-color: #1B7B7B">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-6">
+                    <a class="flex items-center" href="index.html">
+                        <img alt="Commit logo" width="40" height="40" class="h-10 w-10 rounded-xl border border-gray-200" src="icon.png"/>
+                        <span class="ml-3 text-2xl font-bold text-black">Commit</span>
+                    </a>
+                    <nav class="hidden md:flex space-x-8">
+                        <a href="#features" class="nav-link">Features</a>
+                        <a href="book/" class="nav-link">Book</a>
+                        <a href="https://apps.apple.com/app/commit" target="_blank" rel="noopener noreferrer" class="nav-link">Download</a>
+                        <a class="nav-link" href="support/">Support</a>
+                    </nav>
+                    <div class="hamburger md:hidden" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">
+                    <a href="book/">Book</a>
+                    <a href="https://apps.apple.com/app/commit" target="_blank" rel="noopener noreferrer">Download</a>
+                    <a href="privacy/">Privacy</a>
+                    <a href="terms/">Terms</a>
+                    <a href="support/">Support</a>
+                </div>
+            </div>
+        </header>
+        <script>
+            function toggleMenu() {
+                document.getElementById('mobileMenu').classList.toggle('active');
+            }
+        </script>
+
+        <!-- Main Content -->
+        <main class="flex-grow">
+            <div style="background: linear-gradient(to bottom, #FAF6F1 0%, #ffffff 100%)">
+                <!-- Hero Section -->
+                <section class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 py-12 md:py-20">
+                    <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-between">
+                        <div class="text-center md:text-left md:w-1/2 lg:w-3/5">
+                            <img alt="Commit logo" width="120" height="120" class="mb-8 rounded-3xl shadow mx-auto md:mx-0" style="border: 2px solid #1B7B7B; width: 120px; height: 120px;" src="icon.png"/>
+                            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
+                                Stop overthinking.<br><span class="gradient-text">Start deciding.</span>
+                            </h1>
+                            <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
+                                Your AI-powered decision companion.<br class="hidden md:block">
+                                Cut through analysis paralysis. Trust your gut.<br class="hidden md:block">
+                                No judgment. Just clarity.
+                            </p>
+                            <div class="flex flex-col items-center md:items-start gap-4 mb-8">
+                                <a href="https://apps.apple.com/app/commit" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-105">
+                                    <div class="flex w-56 h-16 bg-black text-white rounded-xl items-center justify-center">
+                                        <div class="mr-3">
+                                            <svg viewBox="0 0 384 512" width="35" height="45">
+                                                <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs">Download on the</div>
+                                            <div class="text-2xl font-semibold font-sans -mt-1">App Store</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="flex items-center gap-2 px-4 py-2 rounded-full border-2 w-fit" style="border-color: #1B7B7B; background-color: #E8F4F4">
+                                    <svg class="w-5 h-5" style="color: #1B7B7B" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="text-sm font-semibold" style="color: #1B7B7B">You already know. Commit helps you see it.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- App Screenshots Carousel -->
+                        <div class="flex flex-col items-center md:w-1/2 lg:w-2/5 flex-shrink-0">
+                            <div class="screenshot-carousel">
+                                <button class="carousel-arrow prev" onclick="prevSlide()">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M15 18l-6-6 6-6"/>
+                                    </svg>
+                                </button>
+
+                                <div class="screenshot-stack" id="screenshotStack">
+                                    <div class="screenshot-slide active" data-index="0">
+                                        <img src="screenshot-1.png" alt="Share what's on your mind"/>
+                                    </div>
+                                    <div class="screenshot-slide next" data-index="1">
+                                        <img src="screenshot-2.png" alt="Get clarity fast"/>
+                                    </div>
+                                    <div class="screenshot-slide hidden" data-index="2">
+                                        <img src="screenshot-3.png" alt="Commit to the wave"/>
+                                    </div>
+                                    <div class="screenshot-slide hidden" data-index="3">
+                                        <img src="screenshot-4.png" alt="Track your decisions"/>
+                                    </div>
+                                </div>
+
+                                <button class="carousel-arrow next" onclick="nextSlide()">
+                                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 18l6-6-6-6"/>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="carousel-dots" id="carouselDots">
+                                <div class="carousel-dot active" data-index="0"></div>
+                                <div class="carousel-dot" data-index="1"></div>
+                                <div class="carousel-dot" data-index="2"></div>
+                                <div class="carousel-dot" data-index="3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <script>
+                    let currentSlide = 0;
+                    const totalSlides = 4;
+
+                    function updateCarousel() {
+                        const slides = document.querySelectorAll('.screenshot-slide');
+                        const dots = document.querySelectorAll('.carousel-dot');
+
+                        slides.forEach((slide, i) => {
+                            slide.classList.remove('active', 'next', 'prev', 'hidden');
+                            if (i === currentSlide) {
+                                slide.classList.add('active');
+                            } else if (i === (currentSlide + 1) % totalSlides) {
+                                slide.classList.add('next');
+                            } else if (i === (currentSlide - 1 + totalSlides) % totalSlides) {
+                                slide.classList.add('prev');
+                            } else {
+                                slide.classList.add('hidden');
+                            }
+                        });
+
+                        dots.forEach((dot, i) => {
+                            dot.classList.toggle('active', i === currentSlide);
+                        });
+                    }
+
+                    function nextSlide() {
+                        currentSlide = (currentSlide + 1) % totalSlides;
+                        updateCarousel();
+                    }
+
+                    function prevSlide() {
+                        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                        updateCarousel();
+                    }
+
+                    function goToSlide(index) {
+                        currentSlide = index;
+                        updateCarousel();
+                    }
+
+                    document.querySelectorAll('.carousel-dot').forEach(dot => {
+                        dot.addEventListener('click', () => {
+                            goToSlide(parseInt(dot.dataset.index));
+                        });
+                    });
+
+                    // Auto-advance every 4 seconds
+                    setInterval(nextSlide, 4000);
+
+                    // Touch/swipe support for mobile
+                    let touchStartX = 0;
+                    let touchEndX = 0;
+                    const screenshotStack = document.getElementById('screenshotStack');
+
+                    screenshotStack.addEventListener('touchstart', e => {
+                        touchStartX = e.changedTouches[0].screenX;
+                    }, false);
+
+                    screenshotStack.addEventListener('touchend', e => {
+                        touchEndX = e.changedTouches[0].screenX;
+                        if (touchStartX - touchEndX > 50) nextSlide();
+                        if (touchEndX - touchStartX > 50) prevSlide();
+                    }, false);
+                </script>
+
+                <!-- Features Section -->
+                <section id="features" class="max-w-7xl mx-auto px-4 py-20">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                            Everything you need to <span class="gradient-text">decide and move on</span>
+                        </h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Feature 1: AI Decision Partner -->
+                        <div class="relative bg-white rounded-3xl p-8 border-2 transition-all overflow-hidden group hover:shadow-xl" style="border-color: #1B7B7B">
+                            <div class="w-14 h-14 rounded-2xl mb-5 flex items-center justify-center" style="background-color: #1B7B7B">
+                                <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">AI Decision Partner</h3>
+                            <p class="text-gray-600 text-sm">Talk through any decision. Get honest questions that cut through the noise and help you see what you already know.</p>
+                        </div>
+
+                        <!-- Feature 2: Gut Check -->
+                        <div class="relative bg-white rounded-3xl p-8 border-2 transition-all overflow-hidden group hover:shadow-xl" style="border-color: #1B7B7B">
+                            <div class="w-14 h-14 rounded-2xl mb-5 flex items-center justify-center" style="background-color: #1B7B7B">
+                                <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">The Gut Check</h3>
+                            <p class="text-gray-600 text-sm">Your gut already knows. Commit asks the questions that help you listen to it instead of drowning it out.</p>
+                        </div>
+
+                        <!-- Feature 3: Quick Decide -->
+                        <div class="relative bg-white rounded-3xl p-8 border-2 transition-all overflow-hidden group hover:shadow-xl" style="border-color: #1B7B7B">
+                            <div class="w-14 h-14 rounded-2xl mb-5 flex items-center justify-center" style="background-color: #1B7B7B">
+                                <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Five-Minute Rule</h3>
+                            <p class="text-gray-600 text-sm">Most decisions need five minutes, not five days. Set a timer, process fast, commit.</p>
+                        </div>
+
+                        <!-- Feature 4: No Judgment -->
+                        <div class="relative bg-white rounded-3xl p-8 border-2 transition-all overflow-hidden group hover:shadow-xl" style="border-color: #1B7B7B">
+                            <div class="w-14 h-14 rounded-2xl mb-5 flex items-center justify-center" style="background-color: #1B7B7B">
+                                <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">No Judgment Zone</h3>
+                            <p class="text-gray-600 text-sm">Share your messiest thoughts. Career, relationships, money, life. Commit won't judge you.</p>
+                        </div>
+
+                        <!-- Feature 5: Commitment Tracking -->
+                        <div class="relative bg-white rounded-3xl p-8 border-2 transition-all overflow-hidden group hover:shadow-xl" style="border-color: #E07A5F">
+                            <div class="w-14 h-14 rounded-2xl mb-5 flex items-center justify-center" style="background-color: #E07A5F">
+                                <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Honor the Decision</h3>
+                            <p class="text-gray-600 text-sm">Decided? Commit to it for 30 days before second-guessing. Track your commitments.</p>
+                        </div>
+
+                        <!-- Feature 6: Cost Calculator -->
+                        <div class="relative bg-white rounded-3xl p-8 border-2 transition-all overflow-hidden group hover:shadow-xl" style="border-color: #E07A5F">
+                            <div class="w-14 h-14 rounded-2xl mb-5 flex items-center justify-center" style="background-color: #E07A5F">
+                                <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">See the Real Cost</h3>
+                            <p class="text-gray-600 text-sm">Circling costs you. Energy, opportunities, trust, relationships. See what indecision is actually costing.</p>
+                        </div>
+
+                        <!-- Feature 7: Privacy First -->
+                        <div class="relative bg-white rounded-3xl p-8 border-2 transition-all overflow-hidden group hover:shadow-xl" style="border-color: #E07A5F">
+                            <div class="w-14 h-14 rounded-2xl mb-5 flex items-center justify-center" style="background-color: #E07A5F">
+                                <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Your Thoughts, Private</h3>
+                            <p class="text-gray-600 text-sm">Your decisions are yours. We don't sell your data or share what you're wrestling with.</p>
+                        </div>
+
+                        <!-- Feature 8: Built by Someone Who Gets It -->
+                        <div class="relative bg-white rounded-3xl p-8 border-2 transition-all overflow-hidden group hover:shadow-xl" style="border-color: #E07A5F">
+                            <div class="w-14 h-14 rounded-2xl mb-5 flex items-center justify-center" style="background-color: #E07A5F">
+                                <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">We Get It</h3>
+                            <p class="text-gray-600 text-sm">Built by overthinkers who learned to commit. This is the tool we wish we'd had.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CTA Section -->
+                <section class="max-w-7xl mx-auto px-4 py-20">
+                    <div class="rounded-3xl p-12 md:p-16 text-center" style="background: linear-gradient(135deg, #1B7B7B 0%, #2D9999 100%)">
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 text-balance">Ready to stop circling?</h2>
+                        <p class="text-xl text-white/95 mb-8 max-w-2xl mx-auto text-balance">You already know what to do. Commit helps you see it and do it.</p>
+                        <a href="https://apps.apple.com/app/commit" target="_blank" rel="noopener noreferrer" class="inline-block transition-transform hover:scale-105">
+                            <div class="flex w-56 h-16 bg-black text-white rounded-xl items-center justify-center shadow-lg mx-auto">
+                                <div class="mr-3">
+                                    <svg viewBox="0 0 384 512" width="32" height="42">
+                                        <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-xs">Download on the</div>
+                                    <div class="text-2xl font-semibold font-sans -mt-1">App Store</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t" style="border-color: #1B7B7B">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="flex items-center">
+                            <img alt="Commit logo" width="40" height="40" class="h-10 w-10 rounded-xl border border-gray-200" src="icon.png"/>
+                            <span class="ml-3 text-xl font-bold text-black">Commit</span>
+                        </div>
+                        <p class="mt-4 text-gray-600 max-w-md">Your AI-powered decision companion.<br>Stop overthinking. Start deciding.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold tracking-wider uppercase" style="color: #1B7B7B">Legal</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a class="footer-link" href="terms/">Terms of Service</a></li>
+                            <li><a class="footer-link" href="privacy/">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold tracking-wider uppercase" style="color: #1B7B7B">Support</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a class="footer-link" href="support/">Help Center</a></li>
+                            <li><a href="mailto:support@commitdecisionapp.com" class="footer-link">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 border-t border-gray-200 pt-8">
+                    <p class="text-center text-gray-400 text-sm">&copy; 2026 Monos Pros Monon. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

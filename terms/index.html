@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Terms of Service - Commit</title>
+    <meta name="description" content="Terms of Service for Commit - Your AI Decision-Making Companion"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Lora', Georgia, serif; }
+        .nav-link { color: #374151; font-weight: 500; transition: color 0.2s; }
+        .nav-link:hover { color: #1B7B7B; }
+        .footer-link { color: #6b7280; transition: color 0.2s; }
+        .footer-link:hover { color: #1B7B7B; }
+        .teal-text { color: #1B7B7B; }
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid #1B7B7B;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+        }
+        .mobile-menu.active { display: block; }
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #374151;
+            font-weight: 500;
+            border-radius: 0.5rem;
+        }
+        .mobile-menu a:hover { background-color: #E8F4F4; color: #1B7B7B; }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #374151;
+            transition: all 0.3s;
+        }
+        @media (max-width: 767px) { .hamburger { display: flex; } }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="min-h-screen flex flex-col" style="background-color: #FAF6F1">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b relative" style="border-color: #1B7B7B">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-6">
+                    <a class="flex items-center" href="../index.html">
+                        <img alt="Commit logo" width="40" height="40" class="h-10 w-10 rounded-xl border border-gray-200" src="../icon.png"/>
+                        <span class="ml-3 text-2xl font-bold text-black serif">Commit</span>
+                    </a>
+                    <nav class="hidden md:flex space-x-8">
+                        <a href="../index.html#features" class="nav-link">Features</a>
+                        <a href="https://apps.apple.com/app/commit" target="_blank" rel="noopener noreferrer" class="nav-link">Download</a>
+                        <a class="nav-link" href="../support/">Support</a>
+                    </nav>
+                    <div class="hamburger md:hidden" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">
+                    <a href="../index.html">Home</a>
+                    <a href="https://apps.apple.com/app/commit" target="_blank" rel="noopener noreferrer">Download</a>
+                    <a href="../privacy/">Privacy</a>
+                    <a href="./">Terms</a>
+                    <a href="../support/">Support</a>
+                </div>
+            </div>
+        </header>
+        <script>
+            function toggleMenu() {
+                document.getElementById('mobileMenu').classList.toggle('active');
+            }
+        </script>
+
+        <!-- Main Content -->
+        <main class="flex-grow bg-white">
+            <div class="max-w-4xl mx-auto px-4 py-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-2 serif">Terms of Service</h1>
+                <p class="text-gray-500 mb-8">Last Updated: January 2026</p>
+
+                <div class="space-y-8 text-gray-700">
+                    <section>
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-4 serif">1. Acceptance of Terms</h2>
+                        <p>By downloading, installing, or using the Commit mobile application ("App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-4 serif">2. Description of Service</h2>
+                        <p>Commit provides AI-powered decision support, helping users think through choices, identify patterns in their decision-making, and commit to decisions with confidence. The App is designed to help users stop overthinking and start deciding.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-4 serif">3. Disclaimer of Warranties</h2>
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+                            <p class="font-semibold text-amber-800">THE APP AND ALL INFORMATION PROVIDED ARE OFFERED "AS IS" WITHOUT WARRANTY OF ANY KIND.</p>
+                        </div>
+                        <p class="mb-3"><strong>Important:</strong> Commit provides general decision support only. We are not licensed therapists, financial advisors, or legal professionals. Our AI-generated insights should not replace professional advice for major life decisions.</p>
+                        <p>The guidance provided is based on AI analysis and may not account for all factors in your specific situation.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-4 serif">4. Limitation of Liability</h2>
+                        <p>To the maximum extent permitted by law, Commit and its developers shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from your use of the App or decisions made based on its guidance.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-4 serif">5. User Responsibilities</h2>
+                        <p class="mb-2">You agree to:</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-600">
+                            <li>Use the App only for lawful purposes</li>
+                            <li>Take responsibility for your own decisions</li>
+                            <li>Consult qualified professionals for major life decisions when appropriate</li>
+                            <li>Keep your device and App access secure</li>
+                            <li>Not use the App for harmful, illegal, or unethical purposes</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-4 serif">6. Intellectual Property</h2>
+                        <p>The App, including its design, features, and content, is protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or reverse engineer any part of the App.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-4 serif">7. Third-Party Services</h2>
+                        <p>The App may use third-party services for AI processing. Your use of these features is subject to the respective third-party terms of service.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-4 serif">8. Modifications to Terms</h2>
+                        <p>We reserve the right to modify these Terms at any time. Continued use of the App after changes constitutes acceptance of the modified Terms.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-4 serif">9. Termination</h2>
+                        <p>We may terminate or suspend your access to the App at any time, without prior notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-4 serif">10. Contact</h2>
+                        <p>For questions about these Terms, contact us at:</p>
+                        <a href="mailto:support@commitdecisionapp.com" class="teal-text hover:underline font-medium">support@commitdecisionapp.com</a>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t" style="border-color: #1B7B7B">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="flex items-center">
+                            <img alt="Commit logo" width="40" height="40" class="h-10 w-10 rounded-xl border border-gray-200" src="../icon.png"/>
+                            <span class="ml-3 text-xl font-bold text-black serif">Commit</span>
+                        </div>
+                        <p class="mt-4 text-gray-600 max-w-md">Your AI decision-making companion.<br>Stop overthinking. Start deciding.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold tracking-wider uppercase teal-text">Legal</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a class="footer-link" href="./">Terms of Service</a></li>
+                            <li><a class="footer-link" href="../privacy/">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold tracking-wider uppercase teal-text">Support</h3>
+                        <ul class="mt-4 space-y-4">
+                            <li><a class="footer-link" href="../support/">Help Center</a></li>
+                            <li><a href="mailto:support@commitdecisionapp.com" class="footer-link">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 border-t border-gray-200 pt-8">
+                    <p class="text-center text-gray-400 text-sm">&copy; 2026 Monos Pros Monon. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
