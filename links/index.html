@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Commit | Links</title>
+    <meta name="description" content="All Commit links - Download the app, get the ebook, and more."/>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon"/>
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1B7B7B 0%, #2D3047 100%);
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 680px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .profile {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            margin-bottom: 16px;
+        }
+        .name {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 4px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .tagline {
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+        }
+        .links {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: white;
+            border-radius: 12px;
+            padding: 16px 20px;
+            text-decoration: none;
+            color: #1a1a1a;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .link-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        .link-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+        .link-content {
+            flex: 1;
+        }
+        .link-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .link-description {
+            font-size: 13px;
+            color: #666;
+        }
+        .link-arrow {
+            color: #1B7B7B;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .footer a {
+            color: rgba(255,255,255,0.8);
+            font-size: 13px;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <img src="../icon.png" alt="Commit" class="avatar"/>
+            <h1 class="name">Commit</h1>
+            <p class="tagline">Stop Overthinking. Start Deciding.</p>
+        </div>
+
+        <div class="links">
+            <a href="https://apps.apple.com/app/commit" target="_blank" rel="noopener noreferrer" class="link-card">
+                <img src="../icon.png" alt="Commit App" class="link-icon"/>
+                <div class="link-content">
+                    <div class="link-title">Download Commit App</div>
+                    <div class="link-description">Free on the App Store</div>
+                </div>
+                <svg class="link-arrow" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </a>
+
+            <a href="https://buy.stripe.com/YOUR_STRIPE_LINK" target="_blank" rel="noopener noreferrer" class="link-card">
+                <img src="../book/cover.png" alt="Commit to the Wave" class="link-icon"/>
+                <div class="link-content">
+                    <div class="link-title">Commit to the Wave</div>
+                    <div class="link-description">Ebook by Jillian Driftwood — $9.99</div>
+                </div>
+                <svg class="link-arrow" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </a>
+
+            <a href="https://buy.stripe.com/YOUR_STRIPE_LINK_JOURNEY" target="_blank" rel="noopener noreferrer" class="link-card">
+                <div class="link-icon" style="background: linear-gradient(135deg, #E07A5F, #1B7B7B); display: flex; align-items: center; justify-content: center;">
+                    <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-title">30-Day Decision Journey</div>
+                    <div class="link-description">Daily practice guide — Coming Soon</div>
+                </div>
+                <svg class="link-arrow" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </a>
+
+            <a href="https://commitdecisionapp.com" target="_blank" rel="noopener noreferrer" class="link-card">
+                <div class="link-icon" style="background: linear-gradient(135deg, #1B7B7B, #2D3047); display: flex; align-items: center; justify-content: center;">
+                    <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-title">Visit Website</div>
+                    <div class="link-description">commitdecisionapp.com</div>
+                </div>
+                <svg class="link-arrow" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="footer">
+            <a href="https://commitdecisionapp.com">commitdecisionapp.com</a>
+        </div>
+    </div>
+</body>
+</html>
